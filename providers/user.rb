@@ -14,7 +14,6 @@ action :create do
       execute "create postgresql user #{new_resource.name}" do # ~FC009
         user "postgres"
         command %(psql -c "CREATE ROLE #{role_sql}")
-        sensitive true
       end
 
       new_resource.updated_by_last_action(true)
@@ -28,7 +27,6 @@ action :update do
       execute "update postgresql user #{new_resource.name}" do
         user "postgres"
         command %(psql -c "ALTER ROLE #{role_sql}")
-        sensitive true
       end
 
       new_resource.updated_by_last_action(true)
@@ -42,7 +40,6 @@ action :drop do
       execute "drop postgresql user #{new_resource.name}" do
         user "postgres"
         command %(psql -c 'DROP ROLE IF EXISTS \\\"#{new_resource.name}\\\"')
-        sensitive true
       end
 
       new_resource.updated_by_last_action(true)

@@ -37,7 +37,6 @@ template node["postgresql"]["hba_file"] do
   group  "postgres"
   mode   "0640"
   notifies :reload, "service[postgresql]"
-  sensitive true
 end
 
 # pg_ident
@@ -47,7 +46,6 @@ template node["postgresql"]["ident_file"] do
   group  "postgres"
   mode   "0640"
   notifies :reload, "service[postgresql]"
-  sensitive true
 end
 
 # postgresql
